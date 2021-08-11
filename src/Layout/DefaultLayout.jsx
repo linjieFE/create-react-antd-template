@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { Layout, BackTop } from "antd";
-import routes from "../routes";
+import { routeConfig } from "../router/index";
 import { menuToggleAction } from "../store/actionCreators";
 import echarts from "echarts/lib/echarts";
 import avatar from "../assets/images/user.jpg";
@@ -76,7 +76,7 @@ class DefaultLayout extends Component {
           />
           <Content className="content">
             <Switch>
-              {routes.map(item => {
+              {routeConfig.map(item => {
                 return (
                   <Route
                     key={item.path}

@@ -5,7 +5,7 @@ const { Header } = Layout;
 
 class AppHeader extends Component {
   render() {
-    let { menuClick, avatar, menuToggle, show, loginOut } = this.props;
+    let { menuClick, avatar, menuToggle, show } = this.props;
     const menu = (
       <Menu>
         <Menu.ItemGroup title="用户设置">
@@ -21,7 +21,7 @@ class AppHeader extends Component {
         </Menu.ItemGroup>
         <Menu.Divider />
         <Menu.Item>
-          <span onClick={loginOut}>
+          <span>
             <Icon type="logout" /> 退出登录
           </span>
         </Menu.Item>
