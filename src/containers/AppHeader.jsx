@@ -1,9 +1,13 @@
 import React, { Component } from "react";
-import { Menu, Dropdown, Icon, Layout, Avatar, Badge } from "antd";
+import { Menu, Dropdown, Icon, Layout, Avatar, Badge, Popover } from "antd";
+import Logo from "../assets/images/logo.png";
 
 const { Header } = Layout;
 
 class AppHeader extends Component {
+  state = {
+    Logo
+  };
   render() {
     let { menuClick, avatar, menuToggle, show } = this.props;
     const menu = (
@@ -38,23 +42,18 @@ class AppHeader extends Component {
         </div>
         <div className="right">
           <div className="mr15">
-            <a
-              rel="noopener noreferrer"
-              href="https://github.com/ltadpoles/react-admin"
-              target="_blank"
+            <Popover
+              placement="bottomRight"
+              title={"通知"}
+              content={""}
+              trigger="click"
             >
-              <Icon type="github" style={{ color: "#000" }} />
-            </a>
-          </div>
-          <div className="mr15">
-            <Badge dot={show} offset={[-2, 0]}>
-              <a
-                href="https://github.com/ltadpoles/react-admin"
-                style={{ color: "#000" }}
-              >
-                <Icon type="bell" />
-              </a>
-            </Badge>
+              <Badge dot={show} offset={[-2, 0]}>
+                <a href="./" style={{ color: "#000" }}>
+                  <Icon type="bell" />
+                </a>
+              </Badge>
+            </Popover>
           </div>
           <div>
             <Dropdown overlay={menu} overlayStyle={{ width: "20rem" }}>

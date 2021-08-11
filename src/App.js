@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 import loadable from "./utils/loadable";
 import "animate.css";
-import "./style/base.scss";
-import "./style/App.scss";
+import "./assets/styles/base.scss";
+import "./assets/styles/App.scss";
 
 // 公共模块
 const DefaultLayout = loadable(() => import("./containers"));

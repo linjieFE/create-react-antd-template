@@ -12,7 +12,7 @@ import {
 import { withRouter } from "react-router-dom";
 // import axios from '@/api'
 // import { API } from '@/api/config'
-import "../../style/view-style/login.scss";
+import "../../assets/styles/view-style/login.scss";
 
 const Login = props => {
   const [loading, setLoading] = useState(false);

@@ -7,7 +7,7 @@ import { menuToggleAction } from "../store/actionCreators";
 import echarts from "echarts/lib/echarts";
 import avatar from "../assets/images/user.jpg";
 import menu from "./menu";
-import "../style/layout.scss";
+import "../assets/styles/layout.scss";
 
 import AppHeader from "./AppHeader.jsx";
 import AppAside from "./AppAside.jsx";

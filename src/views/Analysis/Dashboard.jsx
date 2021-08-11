@@ -1,20 +1,56 @@
 import React, { Component } from "react";
-import { Layout, Row, Col, Icon, Divider } from "antd";
+import { Layout, Row, Col, Icon } from "antd";
 import screenfull from "screenfull";
 import "../../assets/styles/view-style/index.scss";
-
-import BarEcharts from "./bar.jsx";
+import "../../assets/styles/index.scss";
 import PieEcharts from "./pie.jsx";
 import LineEcharts from "./line.jsx";
 import ScatterEcharts from "./scatter.jsx";
 import PictorialBarEcharts from "./pictorialBar.jsx";
+import BarEcharts from "./bar.jsx";
 
-class Index extends Component {
+const rankingListData = [];
+for (let i = 0; i < 7; i += 1) {
+  rankingListData.push({
+    title: `工专路 ${i} 号店`,
+    total: 323234
+  });
+}
+
+const bar2 = [
+  {
+    name: "London",
+    "Jan.": 1,
+    "Feb.": 1,
+    "Mar.": 1,
+    "Apr.": 1,
+    "May.": 1,
+    "Jun.": 1,
+    "Jul.": 1,
+    "Aug.": 1
+  },
+  {
+    name: "Berlin",
+    "Jan.": 1,
+    "Feb.": 1,
+    "Mar.": 1,
+    "Apr.": 1,
+    "May.": 1,
+    "Jun.": 1,
+    "Jul.": 1,
+    "Aug.": 1
+  }
+];
+class Dashboard extends Component {
+  state = {
+    bar2
+  };
   fullToggle = () => {
     if (screenfull.isEnabled) {
       screenfull.request(document.getElementById("bar"));
     }
   };
+
   render() {
     return (
       <Layout className="index animated fadeIn">
@@ -67,8 +103,47 @@ class Index extends Component {
                   onClick={this.fullToggle}
                 />
               </div>
-              <Divider />
-              <BarEcharts />
+
+              <div className="flex">
+                <div className="flex-auto-hidden flex flex-column">
+                  <h4 className="flex-none">销售额分布</h4>
+                  <div className="flex-auto-hidden">
+                    <BarEcharts />
+                  </div>
+                </div>
+                <div className="flex-none sales-order">
+                  <h4>门店销售额排名</h4>
+                  <ul>
+                    {rankingListData.map((item, i) => (
+                      <li key={item.title}>
+                        <span>{i + 1}</span>
+                        <span>{item.title}</span>
+                        <span>{item.total}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              {/* <div className="flex">
+                                <div className="flex-auto-hidden flex flex-column">
+                                    <h4 className="flex-none">销售额分布</h4>
+                                    <div className="flex-auto-hidden">
+                                    <BarEcharts />
+                                    </div>
+                                </div>
+                                <div className="flex-none sales-order">
+                                    <h4>门店销售额排名</h4>
+                                    <ul>
+                                    {rankingListData.map((item, i) => (
+                                        <li key={item.title}>
+                                        <span>{i + 1}</span>
+                                        <span>{item.title}</span>
+                                        <span>{item.total}</span>
+                                        </li>
+                                    ))}
+                                    </ul>
+                                </div>
+                            </div> */}
             </div>
           </Col>
         </Row>
@@ -98,5 +173,4 @@ class Index extends Component {
     );
   }
 }
-
-export default Index;
+export default Dashboard;

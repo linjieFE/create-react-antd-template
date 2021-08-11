@@ -23,7 +23,7 @@ import {
   AutoComplete,
   message
 } from "antd";
-import "../../../style/view-style/form.scss";
+import "../../../assets/styles/view-style/form.scss";
 
 const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
@@ -350,8 +350,7 @@ class FromView extends Component {
                     valuePropName: "checked"
                   })(
                     <Checkbox>
-                      阅读并理解{" "}
-                      <a href="https://github.com/ltadpoles">此协议</a>
+                      阅读并理解 <a href="https://github.com/">此协议</a>
                     </Checkbox>
                   )}
                 </Form.Item>
