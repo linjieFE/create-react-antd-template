@@ -23,9 +23,6 @@ class SendTracker {
   // }
   send(data = {}) {
     let extraData = getExtraData();
-    let logInfo = { ...extraData, ...data };
-    tracker(logInfo);
-    store.dispatch(addBug(logInfo));
   }
 }
 
