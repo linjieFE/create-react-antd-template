@@ -21,6 +21,7 @@ import SeriesModel from '../../model/Series';
 import createListSimply from '../helper/createListSimply';
 import * as zrUtil from 'zrender/src/core/util';
 import {encodeHTML} from '../../util/format';
+import LegendVisualProvider from '../../visual/LegendVisualProvider';
 
 var RadarSeries = SeriesModel.extend({
 
@@ -35,9 +36,10 @@ var RadarSeries = SeriesModel.extend({
 
         // Enable legend selection for each data item
         // Use a function instead of direct access because data reference may changed
-        this.legendDataProvider = function () {
-            return this.getRawData();
-        };
+        this.legendVisualProvider = new LegendVisualProvider(
+            zrUtil.bind(this.getData, this), zrUtil.bind(this.getRawData, this)
+        );
+
     },
 
     getInitialData: function (option, ecModel) {
@@ -47,16 +49,39 @@ var RadarSeries = SeriesModel.extend({
         });
     },
 
-    formatTooltip: function (dataIndex) {
+    formatTooltip: function (dataIndex, multipleSeries, dataType, renderMode) {
         var data = this.getData();
         var coordSys = this.coordinateSystem;
         var indicatorAxes = coordSys.getIndicatorAxes();
         var name = this.getData().getName(dataIndex);
-        return encodeHTML(name === '' ? this.name : name) + '<br/>'
+        var newLine = renderMode === 'html' ? '<br/>' : '\n';
+        return encodeHTML(name === '' ? this.name : name) + newLine
             + zrUtil.map(indicatorAxes, function (axis, idx) {
                 var val = data.get(data.mapDimension(axis.dim), dataIndex);
                 return encodeHTML(axis.name + ' : ' + val);
-            }).join('<br />');
+            }).join(newLine);
+    },
+
+    /**
+     * @implement
+     */
+    getTooltipPosition: function (dataIndex) {
+        if (dataIndex != null) {
+            var data = this.getData();
+            var coordSys = this.coordinateSystem;
+            var values = data.getValues(
+                zrUtil.map(coordSys.dimensions, function (dim) {
+                    return data.mapDimension(dim);
+                }), dataIndex, true
+            );
+
+            for (var i = 0, len = values.length; i < len; i++) {
+                if (!isNaN(values[i])) {
+                    var indicatorAxes = coordSys.getIndicatorAxes();
+                    return coordSys.coordToPoint(indicatorAxes[i].dataToCoord(values[i]), i);
+                }
+            }
+        }
     },
 
     defaultOption: {

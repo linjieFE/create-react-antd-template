@@ -24,6 +24,8 @@ import {defaultEmphasis} from '../../util/model';
 import Model from '../../model/Model';
 import {encodeHTML} from '../../util/format';
 import createGraphFromNodeEdge from '../helper/createGraphFromNodeEdge';
+import LegendVisualProvider from '../../visual/LegendVisualProvider';
+import {initCurvenessList, createEdgeMapForCurveness} from '../helper/multipleGraphEdgeHelper';
 
 var GraphSeries = echarts.extendSeriesModel({
 
@@ -32,10 +34,14 @@ var GraphSeries = echarts.extendSeriesModel({
     init: function (option) {
         GraphSeries.superApply(this, 'init', arguments);
 
+        var self = this;
+        function getCategoriesData() {
+            return self._categoriesData;
+        }
         // Provide data for legend select
-        this.legendDataProvider = function () {
-            return this._categoriesData;
-        };
+        this.legendVisualProvider = new LegendVisualProvider(
+            getCategoriesData, getCategoriesData
+        );
 
         this.fillDataTextStyle(option.edges || option.links);
 
@@ -61,7 +67,13 @@ var GraphSeries = echarts.extendSeriesModel({
         var self = this;
 
         if (nodes && edges) {
-            return createGraphFromNodeEdge(nodes, edges, this, true, beforeLink).data;
+            // auto curveness
+            initCurvenessList(this);
+            var graph = createGraphFromNodeEdge(nodes, edges, this, true, beforeLink);
+            zrUtil.each(graph.edges, function (edge) {
+                createEdgeMapForCurveness(edge.node1, edge.node2, this, edge.dataIndex);
+            }, this);
+            return graph.data;
         }
 
         function beforeLink(nodeData, edgeData) {
@@ -215,6 +227,8 @@ var GraphSeries = echarts.extendSeriesModel({
             // Node repulsion. Can be an array to represent range.
             repulsion: [0, 50],
             gravity: 0.1,
+            // Initial friction
+            friction: 0.6,
 
             // Edge length. Can be an array to represent range.
             edgeLength: 30,
@@ -235,7 +249,8 @@ var GraphSeries = echarts.extendSeriesModel({
         edgeSymbol: ['none', 'none'],
         edgeSymbolSize: 10,
         edgeLabel: {
-            position: 'middle'
+            position: 'middle',
+            distance: 5
         },
 
         draggable: false,
@@ -270,7 +285,6 @@ var GraphSeries = echarts.extendSeriesModel({
         lineStyle: {
             color: '#aaa',
             width: 1,
-            curveness: 0,
             opacity: 0.5
         },
         emphasis: {

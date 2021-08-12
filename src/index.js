@@ -1,13 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { Provider } from "react-redux";
-import store from "./store";
+import "antd/dist/antd.less";
+import "@/styles/index.less";
+import "./mock";
+import '@/lib/monitor';
 
-const AppView = (
-  <Provider store={store}>
-    <App />
-  </Provider>
-);
-
-ReactDOM.render(AppView, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));

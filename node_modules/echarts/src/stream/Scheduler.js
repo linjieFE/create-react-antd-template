@@ -65,7 +65,7 @@ var proto = Scheduler.prototype;
  * @param {Object} payload
  */
 proto.restoreData = function (ecModel, payload) {
-    // TODO: Only restroe needed series and components, but not all components.
+    // TODO: Only restore needed series and components, but not all components.
     // Currently `restoreData` of all of the series and component will be called.
     // But some independent components like `title`, `legend`, `graphic`, `toolbox`,
     // `tooltip`, `axisPointer`, etc, do not need series refresh when `setOption`,
@@ -260,6 +260,14 @@ function performStageTasks(scheduler, stageHandlers, ecModel, payload, opt) {
                     task.dirty();
                 }
                 var performArgs = scheduler.getPerformArgs(task, opt.block);
+                // FIXME
+                // if intending to decalare `performRawSeries` in handlers, only
+                // stream-independent (specifically, data item independent) operations can be
+                // performed. Because is a series is filtered, most of the tasks will not
+                // be performed. A stream-dependent operation probably cause wrong biz logic.
+                // Perhaps we should not provide a separate callback for this case instead
+                // of providing the config `performRawSeries`. The stream-dependent operaions
+                // and stream-independent operations should better not be mixed.
                 performArgs.skip = !stageHandler.performRawSeries
                     && ecModel.isSeriesFiltered(task.context.model);
                 updatePayload(task, payload);

@@ -20,6 +20,7 @@
 import * as zrUtil from 'zrender/src/core/util';
 import SeriesModel from '../../model/Series';
 import Tree from '../../data/Tree';
+import Model from '../../model/Model';
 import {wrapTreePathInfo} from '../helper/treeHelper';
 
 export default SeriesModel.extend({
@@ -37,18 +38,25 @@ export default SeriesModel.extend({
 
         completeTreeValue(root);
 
-        var levels = option.levels || [];
-
-        // levels = option.levels = setDefault(levels, ecModel);
-
-        var treeOption = {};
-
-        treeOption.levels = levels;
+        var levelModels = zrUtil.map(option.levels || [], function (levelDefine) {
+            return new Model(levelDefine, this, ecModel);
+        }, this);
 
         // Make sure always a new tree is created when setOption,
         // in TreemapView, we check whether oldTree === newTree
         // to choose mappings approach among old shapes and new shapes.
-        return Tree.createTree(root, this, treeOption).data;
+        var tree = Tree.createTree(root, this, beforeLink);
+
+        function beforeLink(nodeData) {
+            nodeData.wrapMethod('getItemModel', function (model, idx) {
+                var node = tree.getNodeByDataIndex(idx);
+                var levelModel = levelModels[node.depth];
+                levelModel && (model.parentModel = levelModel);
+                return model;
+            });
+        }
+
+        return tree.data;
     },
 
     optionUpdated: function () {
@@ -105,8 +113,7 @@ export default SeriesModel.extend({
             align: 'center',
             position: 'inside',
             distance: 5,
-            silent: true,
-            emphasis: {}
+            silent: true
         },
         itemStyle: {
             borderWidth: 1,
@@ -116,13 +123,19 @@ export default SeriesModel.extend({
             shadowColor: 'rgba(0, 0, 0, 0.2)',
             shadowOffsetX: 0,
             shadowOffsetY: 0,
-            opacity: 1,
-            emphasis: {},
-            highlight: {
+            opacity: 1
+        },
+        highlight: {
+            itemStyle: {
                 opacity: 1
+            }
+        },
+        downplay: {
+            itemStyle: {
+                opacity: 0.5
             },
-            downplay: {
-                opacity: 0.9
+            label: {
+                opacity: 0.6
             }
         },
 

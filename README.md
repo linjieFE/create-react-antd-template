@@ -1,85 +1,141 @@
-## React 后台管理系统
 
+<p align="center">
+   <a href="https://nlrx-wjc.github.io/react-antd-admin-template/" target="_blank">
+      <img src="./logo.png"/>
+   </a>
+</p>
 
-基于 `React` 生态系统搭建的后台管理系统模板
+# 简介
 
-此项目为闲暇时间所做，主要是为了熟悉 `React` 项目的开发流程，打造一个快速开发后台管理系统的模板
+[react-antd-admin-template](https://nlrx-wjc.github.io/react-antd-admin-template/) 是一个基于 `React` 和 `Ant Design` 的后台管理系统模板。它内置了用户登录/登出，动态路由，权限校验，用户管理等典型的业务模型，可以帮助你快速搭建企业级中后台产品原型，是你接私活的不二之选。
 
-既为模板，可能就添加了一些你觉得并不需要的东西，比如菜单栏收缩将判断值存储在 `Redux` 之中，其实完全可以采用组件传值的方式解决，并不需要引入 `Redux` 。添加这个东西只是为了方便项目的拓展、展示它的使用方式。可根据业务需要，完全可以很简单的移除它们
+本系统的开发灵感来自 [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin/) ，这是一个基于 `Vue` 和 `ElementUI` 的优秀的后台管理系统模板，在这里向大佬致敬！
 
-由于每个管理项目可能会有不同的定制化需求，所以对于模板中的一些功能并没有做完善的封装，比如对 `axios` 的封装、前端路由权限的控制。当然，结构或者思路已经存在代码之中了,只需要添加具体的业务代码即可
+其实我的主技术栈一直是 `Vue`，只是最近入坑了 `React` ，看了大半个月文档，就想牛刀小试一下，哈哈。不是有那句话么：检验学习成果最好的方式就是造轮子。所以就造了这么个轮子，哈哈。对于 `React` ，我还是个小白，项目中肯定有做的不够好的地方，欢迎各位同好提 `pr` 或 `issue` 。
 
-此项目会不断进行优化迭代，后期可能会增加 `react-hook` 版本
+- [在线预览](https://nlrx-wjc.github.io/react-antd-admin-template/)
+- [Gitee在线预览(国内用户可访问该地址)](https://nlrx.gitee.io/react-antd-admin-template/)
+- [开发文档](https://nlrx-wjc.github.io/react-antd-admin-template-doc/) 目前还在持续编写完善中...
 
-以下为项目基本信息↓
+# 功能
 
-### 技术栈
+```bash
+- 登录 / 注销
 
-`React@16.10.1 + React-Router@5.1.1 + Redux@4.0.4 + Antd@3.23.5 + Axios@0.19.0`
+- 权限验证
+  - 页面权限
+  - 路由权限
 
-> `Create React App`    脚手架工具快速搭建项目结构
+- 全局功能
+  - 动态侧边栏（支持多级路由嵌套）
+  - 动态面包屑
+  - 本地/后端 mock 数据
+  - Screenfull全屏
+  - 自适应收缩侧边栏
 
-> `react-loadable@5.5.0`    路由懒加载
+- 编辑器
+  - 富文本
+  - Markdown
 
-> `react-redux@7.1.1`     配合 `Redux` 更舒心
+- Excel
+  - 导出excel
+  - 导入excel
+  - 前端可视化excel
 
-> `animate.css@3.7.2`     页面动画展示
+- Zip
+  - 导出zip
 
-> `braft-editor@2.3.8`    富文本插件
+- 错误页面
+  - 404
 
-> `echarts@4.4.0`   数据可视化
+- 组件
+  - 拖拽列表
 
-> `nprogress@0.2.0`     顶部加载条
-
-> `screenfull@5.0.0`    全屏插件
-
-> `prettier@1.18.2`    代码风格统一
-
-### 基本功能
-
-- [x] 路由懒加载
-- [x] 面包屑导航
-- [x] 常用 UI 展示
-- [x] echarts 全屏展示
-- [x] 登陆/注销功能
-- [x] axios 封装
-- [x] 简单权限管理
-
-### 项目结构
-
-```
-├── public                   # 不参与编译的资源文件
-├── src                      # 主程序目录
-│   ├── api                     # axios 封装
-│   ├── assets                  # 资源文件
-│   │   ├── font                    # 字体文件
-│   │   └── images                  # 图片资源
-│   ├── components              # 全局公共组件
-│   │   ├── CustomBreadcrumb        # 面包屑导航
-│   │   └── CustomMenu              # menu 菜单
-│   ├── contatiners             # 页面结构组件
-│   ├── routes                  # 路由目录
-│   ├── store                   # redux 配置
-│   ├── style                   # 样式目录
-│   ├── utils                   # 工具类
-│   ├── views                   # UI 页面
-│   ├── APP.js                  # App.js
-│   └── index.js                # index.js
-├── .prettierrc.js           # 代码规范
-├── config-overrides.js      # antd 样式按需加载
+- 表格
+- Dashboard
+- 引导页
+- ECharts 图表
+- 剪贴板
 ```
 
-### 使用方法
+# 目录结构
 
-```npm
-
-// 安装依赖
-yarn
-
-// 启动
-yarn start
-
-// 打包
-yarn build
-
+```bash
+├─ public                     # 静态资源
+│   ├─ favicon.ico            # favicon图标
+│   └─ index.html             # html模板
+├─ src                        # 项目源代码
+│   ├─ api                    # 所有请求
+│   ├─ assets                 # 图片 字体等静态资源
+│   ├─ components             # 全局公用组件
+│   ├─ config                 # 全局配置
+│   │   ├─ menuConfig.js      # 导航菜单配置
+│   │   └─ routeMap.js        # 路由配置
+│   ├─ lib                    # 第三方库按需加载
+│   ├─ mock                   # 项目mock 模拟数据
+│   ├─ store                  # 全局 store管理
+│   ├─ styles                 # 全局样式
+│   ├─ utils                  # 全局公用方法
+│   ├─ views                  # views 所有页面
+│   ├─ App.js                 # 入口页面
+│   ├─ defaultSettings.js     # 全局默认配置
+│   └─index.js                # 源码入口
+├── .env.development          # 开发环境变量配置
+├── .env.production           # 生产环境变量配置
+├── config-overrides.js       # 对cra的webpack自定义配置
+├── deploy.sh                 # CI部署脚本
+├── .travis.yml               # 自动化CI配置
+└── package.json              # package.json
 ```
+
+# 安装
+
+```shell
+# 克隆项目
+git clone https://github.com/NLRX-WJC/react-antd-admin-template.git
+
+# 进入项目目录
+cd react-antd-admin-template
+
+# 安装依赖
+npm install
+
+# 切换淘宝源，解决 npm 下载速度慢的问题
+npm install --registry=https://registry.npm.taobao.org
+
+# 启动服务
+npm start
+```
+
+启动完成后会自动打开浏览器访问 [http://localhost:3000](http://localhost:3000)， 你看到下面的页面就代表操作成功了。
+
+![](./guide.gif)
+
+接下来你可以修改代码进行业务开发了。
+
+# 关于作者
+
+大家好，我是难凉热血。
+
+终南山下码农一枚，师从道长王重阳，酷爱打码，崇尚开源精神，乐于分享。
+
+2005年服役于中国人民解放军东南战区狼牙特种大队，担任狙击手。
+
+2008年受俄罗斯阿尔法特种部队邀请，执教于该特种部队第一大队教授其队员学习中国特色社会主义理论及毛泽东思想。
+
+2011年竞选美国总统落选，遂心灰意冷，放下所有荣誉，隐居终南山下。
+
+2015年受道长王重阳委托，为道观开发香火管理系统，遂沉迷IT，无法自拔。
+
+喜欢折腾和搞机，追求新鲜技术。
+
+下边是我的微信，欢迎同好伙伴一起树(tree)新(new)风(bee)！！！
+
+![](./wechat.jpg)
+
+# 鼓励作者
+
+作为个人开发者，维护开源实属不易。如果您觉得本项目对你有些许帮助的话，还请帮忙点个 star 哈~~
+如果您有余力的话也非常感谢您对我的赞赏，您的赞赏，是对我创作最大的认可和鼓励。
+
+![](./pay.png)
