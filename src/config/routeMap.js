@@ -22,8 +22,8 @@ const Zip = Loadable({loader: () => import(/*webpackChunkName:'Zip'*/'@/views/zi
 const Clipboard = Loadable({loader: () => import(/*webpackChunkName:'Clipboard'*/'@/views/clipboard'),loading: Loading});
 const Error404 = Loadable({loader: () => import(/*webpackChunkName:'Error404'*/'@/views/error/404'),loading: Loading});
 const User = Loadable({loader: () => import(/*webpackChunkName:'User'*/'@/views/user'),loading: Loading});
-const About = Loadable({loader: () => import(/*webpackChunkName:'About'*/'@/views/about'),loading: Loading});
-const Bug = Loadable({loader: () => import(/*webpackChunkName:'Bug'*/'@/views/bug'),loading: Loading});
+// const About = Loadable({loader: () => import(/*webpackChunkName:'About'*/'@/views/about'),loading: Loading});
+// const Bug = Loadable({loader: () => import(/*webpackChunkName:'Bug'*/'@/views/bug'),loading: Loading});
 
 export default [
   { path: "/dashboard", component: Dashboard},
@@ -47,7 +47,7 @@ export default [
   { path: "/zip", component: Zip},
   { path: "/clipboard", component: Clipboard},
   { path: "/user", component: User },
-  { path: "/about", component: About },
-  { path: "/bug", component: Bug },
+  // { path: "/about", component: About },
+  // { path: "/bug", component: Bug },
   { path: "/error/404", component: Error404 },
 ];

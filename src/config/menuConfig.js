@@ -9,45 +9,45 @@ const menuList = [
     icon: "home",
     roles:["admin","editor","guest"]
   },
-  {
-    title: "开发文档",
-    path: "/doc",
-    icon: "file",
-    roles:["admin","editor","guest"]
-  },
+  // {
+  //   title: "开发文档",
+  //   path: "/doc",
+  //   icon: "file",
+  //   roles:["admin","editor","guest"]
+  // },
   {
     title: "引导页",
     path: "/guide",
     icon: "key",
     roles:["admin","editor"]
   },
-  {
-    title: "权限测试",
-    path: "/permission",
-    icon: "lock",
-    children: [
-      {
-        title: "权限说明",
-        path: "/permission/explanation",
-        roles:["admin"]
-      },
-      {
-        title: "admin页面",
-        path: "/permission/adminPage",
-        roles:["admin"]
-      },
-      {
-        title: "guest页面",
-        path: "/permission/guestPage",
-        roles:["guest"]
-      },
-      {
-        title: "editor页面",
-        path: "/permission/editorPage",
-        roles:["editor"]
-      },
-    ],
-  },
+  // {
+  //   title: "权限测试",
+  //   path: "/permission",
+  //   icon: "lock",
+  //   children: [
+  //     {
+  //       title: "权限说明",
+  //       path: "/permission/explanation",
+  //       roles:["admin"]
+  //     },
+  //     {
+  //       title: "admin页面",
+  //       path: "/permission/adminPage",
+  //       roles:["admin"]
+  //     },
+  //     {
+  //       title: "guest页面",
+  //       path: "/permission/guestPage",
+  //       roles:["guest"]
+  //     },
+  //     {
+  //       title: "editor页面",
+  //       path: "/permission/editorPage",
+  //       roles:["editor"]
+  //     },
+  //   ],
+  // },
   {
     title: "组件",
     path: "/components",
