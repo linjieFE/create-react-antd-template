@@ -51,6 +51,9 @@ class Dashboard extends Component {
     }
   };
 
+  onRefresh = () => {
+    this.props.onRefresh && this.props.onRefresh();
+  };
   render() {
     return (
       <Layout className="index animated fadeIn">
@@ -96,7 +99,13 @@ class Dashboard extends Component {
           <Col>
             <div className="base-style">
               <div className="bar-header">
-                <div>图形全屏展示</div>
+                <div>图形全屏展示1</div>
+                <Icon 
+                  type="refresh" 
+                  style={{ cursor: "pointer" }}
+                  onClick={this.onRefresh}
+                />
+            
                 <Icon
                   type="fullscreen"
                   style={{ cursor: "pointer" }}
