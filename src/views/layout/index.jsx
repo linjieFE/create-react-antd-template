@@ -5,11 +5,12 @@ import Header from "./Header";
 import RightPanel from "./RightPanel";
 import Sider from "./Sider";
 import TagsView from "./TagsView";
-import { Layout } from "antd";
+import { Layout, BackTop } from "antd";
 const Main = (props) => {
   const { tagsView } = props;
   return (
     <Layout style={{ minHeight: "100vh" }}>
+      <BackTop />
       <Sider />
       <Layout>
         <Header />

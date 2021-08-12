@@ -1,6 +1,7 @@
 import Loadable from 'react-loadable';
 import Loading from '@/components/Loading'
 const Dashboard = Loadable({loader: () => import(/*webpackChunkName:'Dashboard'*/'@/views/dashboard'),loading: Loading});
+const Overview = Loadable({loader: () => import(/*webpackChunkName:'Dashboard'*/'@/views/overview'),loading: Loading});
 const Doc = Loadable({loader: () => import(/*webpackChunkName:'Doc'*/'@/views/doc'),loading: Loading});
 const Guide = Loadable({loader: () => import(/*webpackChunkName:'Guide'*/'@/views/guide'),loading: Loading});
 const Explanation = Loadable({loader: () => import(/*webpackChunkName:'Explanation'*/'@/views/permission'),loading: Loading});
@@ -27,26 +28,29 @@ const User = Loadable({loader: () => import(/*webpackChunkName:'User'*/'@/views/
 
 export default [
   { path: "/dashboard", component: Dashboard},
-  { path: "/doc", component: Doc},
-  { path: "/guide", component: Guide  },
-  { path: "/permission/explanation", component: Explanation },
-  { path: "/permission/adminPage", component: AdminPage},
-  { path: "/permission/guestPage", component: GuestPage},
-  { path: "/permission/editorPage", component: EditorPage },
-  { path: "/components/richTextEditor", component: RichTextEditor },
-  { path: "/components/Markdown", component: Markdown},
-  { path: "/components/draggable", component: Draggable},
+  { path: "/overview",component:Overview},
+  // { path: "/doc", component: Doc},
+  // { path: "/guide", component: Guide  },
+  // { path: "/permission/explanation", component: Explanation },
+  // { path: "/permission/adminPage", component: AdminPage},
+  // { path: "/permission/guestPage", component: GuestPage},
+  // { path: "/permission/editorPage", component: EditorPage },
+  // { path: "/components/richTextEditor", component: RichTextEditor },
+  // { path: "/components/Markdown", component: Markdown},
+  // { path: "/components/draggable", component: Draggable},
   { path: "/charts/keyboard", component: KeyboardChart},
   { path: "/charts/line", component: LineChart},
+  { path: "/charts/line/List", component: LineChart},
+  { path: "/charts/line/Case", component: LineChart},
   { path: "/charts/mix-chart", component: MixChart},
   { path: "/nested/menu1/menu1-1", component: Menu1_1},
   { path: "/nested/menu1/menu1-2/menu1-2-1", component: Menu1_2_1},
   { path: "/table", component: Table},
-  { path: "/excel/export", component: ExportExcel},
-  { path: "/excel/upload", component: UploadExcel},
-  { path: "/zip", component: Zip},
-  { path: "/clipboard", component: Clipboard},
-  { path: "/user", component: User },
+  // { path: "/excel/export", component: ExportExcel},
+  // { path: "/excel/upload", component: UploadExcel},
+  // { path: "/zip", component: Zip},
+  // { path: "/clipboard", component: Clipboard},
+  // { path: "/user", component: User },
   // { path: "/about", component: About },
   // { path: "/bug", component: Bug },
   { path: "/error/404", component: Error404 },

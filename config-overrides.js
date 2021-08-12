@@ -6,8 +6,6 @@ const {
   overrideDevServer
 } = require("customize-cra");
 
-const webpack = require('webpack');
-
 const ENV = {
   DEV: 'http://10.21.0.111:8000/',
   PROD: 'http://a.pro.example.com/'
@@ -54,7 +52,7 @@ module.exports = {
     // 使用less-loader对源码中的less的变量进行重新指定
     addLessLoader({
       javascriptEnabled: true,
-      modifyVars: { "@primary-color": "#1DA57A" },
+      modifyVars: { "@primary-color": "#285780" },
     }),
 
     // 配置路径别名
