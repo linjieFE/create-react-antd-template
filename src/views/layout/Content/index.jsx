@@ -19,12 +19,12 @@ const getPageTitle = (menuList, pathname) => {
 };
 
 const LayoutContent = (props) => {
-  const { role, location } = props;
+  const { location } = props;
   const { pathname } = location;
-  const handleFilter = (route) => {
-    // 过滤没有权限的页面
-    return role === "admin" || !route.roles || route.roles.includes(role);
-  };
+  // const handleFilter = (route) => {
+  //   // 过滤没有权限的页面
+  //   return role === "admin" || !route.roles || route.roles.includes(role);
+  // };
   return (
     <DocumentTitle title={getPageTitle(menuList, pathname)}>
       <Content style={{ height: "calc(100% - 100px)" }}>
@@ -39,13 +39,11 @@ const LayoutContent = (props) => {
               <Redirect exact from="/" to="/dashboard" />
               {routeList.map((route) => {
                 return (
-                  handleFilter(route) && (
                     <Route
                       component={route.component}
                       key={route.path}
                       path={route.path}
                     />
-                  )
                 );
               })}
               <Redirect to="/error/404" />
