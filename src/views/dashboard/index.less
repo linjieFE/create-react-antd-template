@@ -1,9 +1,133 @@
+
+
+@import "../../styles/iconfont.less";
 .app-container {
-  background-color: rgb(240, 242, 245);
-  position: relative;
-  .chart-wrapper {
-    background: #fff;
-    padding: 16px 16px 0;
-    margin-bottom: 32px;
-  }
+    background-color: rgb(240, 242, 245);
 }
+.index {
+    .base-style {
+        background-color: #fff;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        box-shadow: 0px 2px 13px 0px rgba(228, 228, 228, 0.6);
+        padding: 15px;
+    }
+    .index-header {
+        color: #fff;
+        span {
+            font-weight: 600;
+            font-size: 2rem;
+        }
+        .base-style {
+            display: flex;
+        }
+        .wechat {
+            background-color: #70ca63;
+        }
+        .ant-design {
+        background-color: #967adc;
+        }
+    
+        .gitlab {
+        background-color: #5d5dfd;
+        }
+    
+        .weibo {
+        background-color: #fb452d;
+        }
+
+        .icon-style {
+            color: #fbfbf4b3;
+            font-size: 6rem;
+            padding-right: 1rem;
+        }
+    }
+    .bar-header {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+}
+.flex {
+    display: flex;
+    height: 100%;
+    position: relative;
+    flex: 1;
+    font-size: 14px;
+}
+  
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-auto-hidden {
+    .flex-auto {
+        flex: auto;
+        position: relative;
+        height: 100%;
+    }
+    overflow: hidden;
+}
+
+.flex-none {
+    flex: none;
+    position: relative;
+}
+.abs {
+    position: absolute;
+  }
+  
+  .abs-full {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .fl {
+    float: left;
+  }
+  
+  .fr {
+    float: right;
+  }
+  
+  .inline-block {
+    display: inline-block;
+  }
+  @media (min-width: 768px) {
+    .sales-order {
+      display: block !important;
+    }
+  }
+  .sales-order {
+    display: none;
+    width: 300px;
+    padding: 0 10px 0 40px;
+    ul {
+      margin-top: 20px;
+      li {
+        margin-top: 10px;
+        span:first-child {
+          margin-right: 20px;
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          border-radius: 20px;
+          background: #efefef;
+          line-height: 20px;
+          text-align: center;
+          font-size: 12px;
+          color: #333;
+          font-weight: 700;
+        }
+        span:last-child {
+          float: right;
+        }
+      }
+    }
+  }
+  

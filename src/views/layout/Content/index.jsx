@@ -21,10 +21,6 @@ const getPageTitle = (menuList, pathname) => {
 const LayoutContent = (props) => {
   const { location } = props;
   const { pathname } = location;
-  // const handleFilter = (route) => {
-  //   // 过滤没有权限的页面
-  //   return role === "admin" || !route.roles || route.roles.includes(role);
-  // };
   return (
     <DocumentTitle title={getPageTitle(menuList, pathname)}>
       <Content style={{ height: "calc(100% - 100px)" }}>
@@ -55,4 +51,4 @@ const LayoutContent = (props) => {
   );
 };
 
-export default connect((state) => state.user)(withRouter(LayoutContent));
+export default connect((state) => state)(withRouter(LayoutContent));

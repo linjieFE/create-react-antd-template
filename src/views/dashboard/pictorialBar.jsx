@@ -26,7 +26,7 @@ let pathSymbols = {
 
 class PictorialBar extends Component {
     componentDidMount() {
-        let myChart = echarts.init(document.getElementById('pictorialBar'))
+        let myChart = echarts.init(document.getElementById('pictorialBar'),"macarons")
         myChart.setOption({
             tooltip: {
                 trigger: 'axis',

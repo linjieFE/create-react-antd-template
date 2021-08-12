@@ -7,7 +7,7 @@ import 'echarts/lib/component/legend'
 
 class Bar extends Component {
     componentDidMount() {
-        let myChart = echarts.init(document.getElementById('bar'))
+        let myChart = echarts.init(document.getElementById('bar'),"macarons")
         myChart.setOption({
             tooltip: {
                 trigger: 'axis',
@@ -17,7 +17,7 @@ class Bar extends Component {
                 }
             },
             legend: {
-                data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎', '百度', '谷歌', '必应', '其他']
+                data: ['Robot', 'Arm', 'Control Box', 'Teach Pendant', 'Motion Bar', 'Joint', 'Robot Bed', 'License', 'Other']
             },
             grid: {
                 left: '3%',
@@ -38,30 +38,30 @@ class Bar extends Component {
             ],
             series: [
                 {
-                    name: '直接访问',
+                    name: 'Robot',
                     type: 'bar',
                     data: [320, 332, 301, 334, 390, 330, 320]
                 },
                 {
-                    name: '邮件营销',
+                    name: 'Arm',
                     type: 'bar',
-                    stack: '广告',
+                    stack: 'Arm',
                     data: [120, 132, 101, 134, 90, 230, 210]
                 },
                 {
-                    name: '联盟广告',
+                    name: 'Control Box',
                     type: 'bar',
-                    stack: '广告',
+                    stack: 'Arm',
                     data: [220, 182, 191, 234, 290, 330, 310]
                 },
                 {
-                    name: '视频广告',
+                    name: 'Teach Pendant',
                     type: 'bar',
-                    stack: '广告',
+                    stack: 'Arm',
                     data: [150, 232, 201, 154, 190, 330, 410]
                 },
                 {
-                    name: '搜索引擎',
+                    name: 'Motion Bar',
                     type: 'bar',
                     data: [862, 1018, 964, 1026, 1679, 1600, 1570],
                     markLine: {
@@ -74,28 +74,28 @@ class Bar extends Component {
                     }
                 },
                 {
-                    name: '百度',
+                    name: 'Joint',
                     type: 'bar',
-                    barWidth: 5,
-                    stack: '搜索引擎',
+                    // barWidth: 5,
+                    stack: 'Joint',
                     data: [620, 732, 701, 734, 1090, 1130, 1120]
                 },
                 {
-                    name: '谷歌',
+                    name: 'Robot Bed',
                     type: 'bar',
-                    stack: '搜索引擎',
+                    stack: 'Joint',
                     data: [120, 132, 101, 134, 290, 230, 220]
                 },
                 {
-                    name: '必应',
+                    name: 'License',
                     type: 'bar',
-                    stack: '搜索引擎',
+                    stack: 'Joint',
                     data: [60, 72, 71, 74, 190, 130, 110]
                 },
                 {
-                    name: '其他',
+                    name: 'Other',
                     type: 'bar',
-                    stack: '搜索引擎',
+                    stack: 'Joint',
                     data: [62, 82, 91, 84, 109, 110, 120]
                 }
             ]
